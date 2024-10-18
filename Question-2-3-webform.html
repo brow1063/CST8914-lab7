@@ -28,21 +28,31 @@
     <body>
         <h1>Feedback form</h1>
     <form>
-        <div class="control">
-          <label>Full name <span class="required">*</span></label><input id="name" name="name" type="text" />
-        </div>
+      <div class="control">
+        <!-- Added 'for' attribute to associate the label with the input -->
+        <label for="name">Full name <span class="required">*</span></label>
+        <input id="name" name="name" type="text" aria-required="true" aria-describedby="name-instruction" />
+        <!-- Inline instructions for screen readers -->
+        <span id="name-instruction" class="offscreen">This field is required. Please enter your full name.</span>
+    </div>
+    
         <div class="control">
           <label>Biography</label><textarea id="biography" name="biography" type="text"></textarea>
           <span>Include examples on your skills in JavaScript.</span>
         </div>
         
-          <div>Gender</div>
+          <!-- Grouped radio buttons using fieldset and legend -->
+        <fieldset>
+          <legend>Gender <span class="required">*</span></legend>
           <div class="control">
-            <input id="gender_male" name="gender" type="radio" value="male" /><label>Male</label>
+              <input id="gender_male" name="gender" type="radio" value="male" aria-required="true" />
+              <label for="gender_male">Male</label>
           </div>
           <div class="control">
-            <input id="gender_female" name="gender" type="radio" value="female" /><label>Female</label>
+              <input id="gender_female" name="gender" type="radio" value="female" aria-required="true" />
+              <label for="gender_female">Female</label>
           </div>
+      </fieldset>
         
         <div class="control">
           <input id="accept_agbs" name="accept_agbs" type="checkbox" value="1" /><label>I accept the terms and conditions</label>
